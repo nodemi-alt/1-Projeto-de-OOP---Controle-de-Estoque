@@ -1,4 +1,4 @@
-![image](https://github.com/nodemi-alt/1-Projeto-de-OOP---Controle-de-Estoque/assets/163960947/2287d5bf-8c04-413b-bf04-78cdf2204bfa)# 1-Projeto-de-OOP---Controle-de-Estoque
+# 1-Projeto-de-OOP---Controle-de-Estoque
 ### Matheus Veríssimo 
 RA - 00000850062  
 
