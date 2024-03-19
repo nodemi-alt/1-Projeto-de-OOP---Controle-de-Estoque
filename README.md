@@ -22,8 +22,11 @@ Ambos arquivos na pasta `src`.
 
 ## Requisitos adicionais :
 - Função para visualizar todos os produtos registrados
+
   Muito conveniente, e ajuda a testar/identificar problemas
+  
 - Função para ver os dados totais do estoque
+  
   Permite ver a quantidade total de produtos, o valor coletivo de todos os produtos, etc
   
   ![image](https://github.com/nodemi-alt/1-Projeto-de-OOP---Controle-de-Estoque/assets/163960947/fa33e408-01d9-486a-a791-c509a20bfb79)
