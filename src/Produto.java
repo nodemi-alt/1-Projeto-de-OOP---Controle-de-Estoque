@@ -141,7 +141,7 @@ static void Consultar(int qtdDeProdutos, Produto[] array)
            
             do {
             System.out.println("\n-------------------------");
-            System.out.println("Produto " + (retorno+1) + " - " + array[retorno].nome + "\n");
+            System.out.println("Produto - " + array[retorno].nome + "\n");
             System.out.println(" >> Quantia atual : " + array[retorno].qtd + " unidades");
             System.out.println(" >> Valor por unidade : R$" + array[retorno].valor);
             System.out.println(" >> Espaço ocupado/unidade : " + array[retorno].espaco_ocupado +"\n");
