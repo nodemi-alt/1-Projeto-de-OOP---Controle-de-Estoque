@@ -37,7 +37,7 @@ Ambos arquivos na pasta `src`.
 
 ## Qualidades agradaveis :
 - Array aumenta de tamanho automaticamente para acomodar os objetos sendo salvos
-- Try-catch em todos os scans, eliminando a maioria dos casos em que o programa explode por receber um input diferente do esperado <sub> talvez a significante custa de legibilidade e organização </sub>
+- Try-catch em todos os scans de numeros, eliminando a maioria dos casos em que o programa explode por receber um input diferente do esperado <sub> talvez a significante custa de legibilidade e organização </sub>
 
   ![image](https://github.com/nodemi-alt/1-Projeto-de-OOP---Controle-de-Estoque/assets/163960947/5cd96e2c-3d60-4959-839e-1a5292d91a98)
 
