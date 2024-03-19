@@ -41,7 +41,7 @@ do
 	 	arraycopia = Arrays.copyOf(array, qtdDeProdutos + limiteatual);
 	 	array = Arrays.copyOf(arraycopia, qtdDeProdutos + limiteatual);	
 	 	limiteatual = limiteatual*2;
-		System.out.println("aconteceu denovo//" + limiteatual + qtdDeProdutos);
+		
 	}
 	opcoes();
 
