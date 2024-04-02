@@ -6,8 +6,7 @@ import java.util.InputMismatchException;
 
 
 
-@SuppressWarnings({"unused", "resource"}) // "resource" porque meu JDE gosta de dar aviso quando o scanner nao foi fechado. alternativamente : mete scan.close(); no final da main
-// "unused" é o warning mais chato e inutil da historia.
+@SuppressWarnings({"unused"}) 
 public class Main
 {
 	
@@ -16,9 +15,8 @@ static void opcoes()
 	System.out.println("\n\nBem vindo ao sistema de controle de estoque.\n\n>>> O que você quer fazer agora?\n 1 - Adicionar novo tipo de produto \n 2 - Consultar/alterar dados de um produto \n 3 - Ver todos os produtos \n 4 - Remover um produto \n 5 - Ver dados do estoque \n 0 - Sair do programa\n");
 }
 
-static void EnterPraContinuar()
+static void EnterPraContinuar(Scanner scan)
 {
-	Scanner scan = new Scanner(System.in);
 	String superfluo;
 	System.out.println("\n   Aperte Enter para continuar.");
 	superfluo = scan.nextLine();
@@ -49,33 +47,34 @@ do
 			catch (InputMismatchException e)
 			{ scan.next();
 		  	menu = 10; }
+		scan.nextLine();
 
 	    switch (menu)
 		{
 			case 1 :
-			retorno = Produto.novoproduto(qtdDeProdutos, array);
+			retorno = Produto.novoproduto(qtdDeProdutos, array, scan);
 			if (retorno == 1) { qtdDeProdutos++; }
-			EnterPraContinuar();
+			EnterPraContinuar(scan);
 			break;
 
 			case 2 :
-			Produto.Consultar(qtdDeProdutos, array);
+			Produto.Consultar(qtdDeProdutos, array, scan);
 			break;
 
 			case 3 :
 			Produto.MostrarTodos(qtdDeProdutos, array);
-			EnterPraContinuar();
+			EnterPraContinuar(scan);
 			break;
 			
 			case 4 :
-			retorno = Produto.remover(qtdDeProdutos, array);
+			retorno = Produto.remover(qtdDeProdutos, array, scan);
 			if (retorno == 1) { qtdDeProdutos--; }
-			EnterPraContinuar();
+			EnterPraContinuar(scan);
 			break;
 
 			case 5 :
 			Produto.Armazem(qtdDeProdutos, array);
-			EnterPraContinuar();
+			EnterPraContinuar(scan);
 			break;
 
 			case 0 :
@@ -89,6 +88,6 @@ do
 
 } while (menu != 0);
 
-// scan.close();
+scan.close();
 }
 }
