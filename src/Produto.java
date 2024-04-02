@@ -1,8 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.Locale; 
 import java.util.Scanner;
-@SuppressWarnings({"resource", "unused"}) // O meu JDE gosta de dar aviso quando o scanner nao foi fechado. alternativamente : mete scan.close(); no final da main
-// "unused" é o warning mais chato e inutil da historia.
+@SuppressWarnings({"unused"}) 
 public class Produto 
 {
     String nome;
@@ -17,17 +16,15 @@ public Produto(String nome, double valor, int espaco_ocupado)
         this.valor = valor;
         this.espaco_ocupado = espaco_ocupado;
     }
-static void EnterPraContinuar()
+static void EnterPraContinuar(Scanner scan)
     {
-        Scanner scan = new Scanner(System.in);
         String superfluo;
         System.out.println("\n>>> Aperte Enter para continuar.");
         superfluo = scan.nextLine();
     }
 
-static int novoproduto(int qtdDeProdutos, Produto[] array)
+static int novoproduto(int qtdDeProdutos, Produto[] array, Scanner scan)
     {
-	    Scanner scan = new Scanner(System.in);	
         scan.useLocale(Locale.ENGLISH); 
 	    String nome; double valor = 1; int espaco_ocupado = 1; int tentativa = 0;
 	    System.out.println("\n>>> Insira o nome do produto que você quer adicionar :");
@@ -53,6 +50,7 @@ static int novoproduto(int qtdDeProdutos, Produto[] array)
 	        Produto produto = new Produto(nome, valor, espaco_ocupado);
 	        array[qtdDeProdutos] = produto;
             System.out.println("\n>>> Produto '" + nome + "' adicionado com sucesso.");
+            scan.nextLine();
             return 1;
             }
         else
@@ -73,9 +71,8 @@ static int busca(String nomeprocurado, int qtdDeProdutos, Produto[] array)
     return -1;
     }
 
-static int remover(int qtdDeProdutos, Produto[] array)
+static int remover(int qtdDeProdutos, Produto[] array, Scanner scan)
 {
-    Scanner scan = new Scanner(System.in);	
     int retorno;
     String nomeprocurado;
     
@@ -124,9 +121,8 @@ static void MostrarTodos(int qtdDeProdutos, Produto[] array)
         }
     }
     
-static void Consultar(int qtdDeProdutos, Produto[] array)
+static void Consultar(int qtdDeProdutos, Produto[] array, Scanner scan)
     { 
-    Scanner scan = new Scanner(System.in);	
     scan.useLocale(Locale.ENGLISH);
     int retorno;
     String nomeprocurado;
@@ -154,18 +150,22 @@ static void Consultar(int qtdDeProdutos, Produto[] array)
 			    catch (InputMismatchException e)
 			    { scan.next();
 		  	    menu = 10; }
+		  	    scan.nextLine();
             switch (menu)
 		{
 			case 1 :
-			AlterarQTD(retorno, array);
+			AlterarQTD(retorno, array, scan);
+			scan.nextLine();
             break;
 
             case 2 :
-			AlterarValor(retorno, array);
+			AlterarValor(retorno, array, scan);
+			scan.nextLine();
             break;
 
             case 3 :
-			AlterarEspaco(retorno, array);
+			AlterarEspaco(retorno, array, scan);
+			scan.nextLine();
             break;
 
             case 0 : 
@@ -180,12 +180,11 @@ static void Consultar(int qtdDeProdutos, Produto[] array)
     }   
     else
     System.out.println(">>> conta nao encontrada!");
-    EnterPraContinuar();
+    EnterPraContinuar(scan);
 }
 
-static void AlterarQTD(int n, Produto[] array)
+static void AlterarQTD(int n, Produto[] array, Scanner scan)
     {
-        Scanner scan = new Scanner(System.in);	
         scan.useLocale(Locale.ENGLISH);
         int num = 1;
         int tentativa = 0;
@@ -210,9 +209,8 @@ static void AlterarQTD(int n, Produto[] array)
 
     }
 
-static void AlterarValor(int n, Produto[] array)
+static void AlterarValor(int n, Produto[] array, Scanner scan)
 {
-    Scanner scan = new Scanner(System.in);	
     scan.useLocale(Locale.ENGLISH);
     Double num = 1.0;
     int tentativa = 0;
@@ -225,7 +223,7 @@ static void AlterarValor(int n, Produto[] array)
             try  {num = scan.nextDouble(); tentativa = 1;}
             catch (InputMismatchException e) 
             { scan.next(); System.out.println(">>> Erro : Entrada invalida, por favor insira um numero. use o ponto e nao virgula como separador decimal. ");} }
-        if (num >= 0)
+        if (num > 0)
         { array[n].valor = num;
           tentativa2 = -1; }
         else if (num == -1)
@@ -237,9 +235,8 @@ static void AlterarValor(int n, Produto[] array)
 
 }
 
-static void AlterarEspaco(int n, Produto[] array)
+static void AlterarEspaco(int n, Produto[] array, Scanner scan)
 {
-    Scanner scan = new Scanner(System.in);	
     scan.useLocale(Locale.ENGLISH);
     int num = 1;
     int tentativa = 0;
